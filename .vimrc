@@ -12,9 +12,10 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Plugins from GitHub
+Plugin 'bling/vim-airline'
+Plugin 'kien/ctrlp'
+Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'unite-colorscheme'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -41,6 +42,8 @@ let g:mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
+noremap j k
+noremap k j
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " User interface
