@@ -13,9 +13,16 @@ Plugin 'gmarik/Vundle.vim'
 
 " Plugins from GitHub
 Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp'
+Plugin 'ervandew/supertab'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sensible'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -42,8 +49,6 @@ let g:mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
-noremap j k
-noremap k j
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " User interface
@@ -117,7 +122,6 @@ set tm=500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
-colorscheme desert
 set background=dark
 
 " Set extra options when running in GUI mode
