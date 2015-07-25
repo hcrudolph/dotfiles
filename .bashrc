@@ -89,8 +89,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
 export PATH="~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin:$PATH"
 export PATH="/home/hans/anaconda/bin:$PATH"
 
 export PS1="\[$(tput bold)\]\u\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;247m\]@\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;220m\][\w]\[$(tput sgr0)\]\[\033[38;5;15m\] \\$ \[$(tput sgr0)\]"
-
