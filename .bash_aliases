@@ -9,8 +9,9 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias h='head'
+alias hist='history'
 alias t='tail'
-
+alias tm='tmux'
 
 alias reload='source ~/.bashrc'
 alias xx='exit'
@@ -43,12 +44,12 @@ alias gpu='git push'
 alias grb='git rebase'
 alias gst='git status'
 
-# perform 'ls' after 'cd' if successful
-cdls() {
+# perform 'll' after 'cd' if successful
+cdl() {
     builtin cd "$*"
     RESULT=$?
     if [ "$RESULT" -eq 0 ]; then
-        ls
+        ll
     fi
 }
 

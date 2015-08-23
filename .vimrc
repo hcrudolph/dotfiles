@@ -14,7 +14,6 @@ Plugin 'gmarik/Vundle.vim'
 " Plugins from GitHub
 Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
@@ -26,8 +25,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()            " required by Vundle
+filetype plugin indent on    " required by Vundle
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -160,6 +159,9 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Acceptable paste command
+set pastetoggle=<F2>
+
 " Use spaces instead of tabs
 set expandtab
 
@@ -174,14 +176,14 @@ set tabstop=4
 set lbr
 set tw=500
 
-" set ai "Auto indent
+set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
+" set wrap "Wrap lines
 
 
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual mode related
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f')<CR>
@@ -243,9 +245,9 @@ autocmd BufReadPost *
 set viminfo^=%
 
 
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Status line
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
 
@@ -337,14 +339,20 @@ map <leader>q :e ~/buffer<cr>
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" remap NERDTree
+command NT NERDTree
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Abbrevations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-iabbrev adn and
-iabbrev teh the
 iabbrev esle else
 iabbrev eles else
+iabbrev eles else
+iabbrev sefl self
+iabbrev fnc function
+iabbrev pb public
+iabbrev pt protected
+iabbrev pr provate
 iabbrev @@ hanschristianrudolph@gmail.com
 iabbrev hcr Hans Christian Rudolph
 
