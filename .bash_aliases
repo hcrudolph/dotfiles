@@ -33,6 +33,7 @@ alias apt-up="sudo apt-get update && sudo apt-get upgrade"
 # git commands simplified
 alias gad='git add'
 alias gaa='git add -A'
+alias gus='git reset HEAD'
 alias gbr='git branch'
 alias gci='git commit'
 alias gco='git checkout'
