@@ -16,7 +16,7 @@ Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'kien/ctrlp.vim'
-Plugin 'mattn/gist-vim'
+Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
@@ -131,6 +131,7 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 set background=dark
+colorscheme sonofobsidian
 
 " Set extra options when running in GUI mode
 if has("gui_running")
