@@ -25,6 +25,11 @@ alias apt-show='apt-cache show'
 alias apt-up="sudo apt-get update && sudo apt-get upgrade"
 
 # dnf
+alias dnfs='dnf search'
+alias dnfi='dnf install'
+alias dnfu='dnf update'
+alias dnfc='dnf clean all'
+alias dnfr='dnf remove'
 
 # git
 alias gad='git add'
