@@ -68,6 +68,7 @@ set so=7
 
 " Enable line numbers
 set number numberwidth=4
+set relativenumber
 
 " Turn on the WiLd menu
 set wildmenu
@@ -133,7 +134,7 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 set background=dark
-colorscheme sonofobsidian
+colorscheme black_angus
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -183,6 +184,8 @@ set ai "Auto indent
 set si "Smart indent
 " set wrap "Wrap lines
 
+" strip all whitespaces at eol when saving a file
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual mode related
@@ -363,6 +366,14 @@ iabbrev hcr Hans Christian Rudolph
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
