@@ -94,5 +94,5 @@ export PATH="~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin:$PATH"
 export PATH="/home/hans/anaconda/bin:$PATH"
 export PATH="~/.composer/vendor/bin:$PATH"
 
-export PS1="\[$(tput bold)\]\u\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;247m\]@\h\[$(tput sgr0)\]\[\033[38;5;247m\]:\[$(tput sgr0)\]\[\033[38;5;226m\][\w]\[$(tput sgr0)\]\[\033[38;5;15m\] \\$ \[$(tput sgr0)\]"
+export PS1="\[$(tput bold)\]\u\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;247m\]@\h\[$(tput sgr0)\]\[\033[38;5;247m\]:\[$(tput sgr0)\]\[\033[38;5;226m\][\w]\[$(tput sgr0)\]\[\033[38;5;15m\] :: \[$(tput sgr0)\]"
 

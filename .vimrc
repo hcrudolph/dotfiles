@@ -51,14 +51,25 @@ let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
+nmap <leader>e :q!<cr>
 nmap <C-d> yyp
 noremap cc ddO
 
-" forget about arrow keys
+" Creating and closing Tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+
+" Switching Tabs
+map <leader>n :tabprevious<cr>
+map <leader>m :tabnext<cr>
+
+" Forget about arrow keys
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " User interface
@@ -66,7 +77,7 @@ noremap <Right> <NOP>
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
-" Enable line numbers
+" Enable (relative) line numbers
 set number numberwidth=4
 set relativenumber
 
@@ -74,7 +85,7 @@ set relativenumber
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc
+set wildignore=*.o,*~,*.pyc,*.hi
 
 "Always show current position
 set ruler
@@ -156,7 +167,7 @@ set ffs=unix,dos,mac
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 
@@ -222,12 +233,6 @@ map <leader>bd :Bclose<cr>
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
 
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
@@ -264,14 +269,15 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
-map 0 ^
+" Map ALT key properly
+execute "set <M-j>=\ej"
+execute "set <M-k>=\ek"
+nnoremap <M-j> j
+nnoremap <M-k> k
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+" Move a line of text using ALT+[jk]
+noremap <M-j> :m+1<cr>==
+noremap <M-k> :m-2<cr>==
 
 if has("mac") || has("macunix")
   nmap <D-j> <M-j>
@@ -304,22 +310,6 @@ map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><r
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with vimgrep, display your results in cope by doing:
-"  <leader>cc
-"
-" To go to the next search result do:
-"  <leader>n
-"
-" To go to the previous search results do:
-"  <leader>p
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -336,15 +326,6 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer<cr>
-
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
 " remap NERDTree
 command NT NERDTree
 
@@ -355,10 +336,10 @@ iabbrev esle else
 iabbrev eles else
 iabbrev eles else
 iabbrev sefl self
-iabbrev fnc function
+iabbrev fn function
 iabbrev pb public
 iabbrev pt protected
-iabbrev pr provate
+iabbrev pr private
 iabbrev @@ hanschristianrudolph@gmail.com
 iabbrev hcr Hans Christian Rudolph
 
