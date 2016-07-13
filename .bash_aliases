@@ -11,6 +11,7 @@ alias h='head'
 alias t='tail'
 alias tm='tmux'
 alias reload='. ~/.bashrc'
+alias gtime='/usr/bin/time'
 alias ..='cd ..'
 alias ...='cd ../..'
 
