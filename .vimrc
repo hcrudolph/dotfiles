@@ -1,14 +1,14 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible
+filetype off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
+" let Vundle manage Vundle
 Plugin 'gmarik/Vundle.vim'
 
 " Plugins from GitHub
@@ -27,13 +27,16 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 
-call vundle#end()            " required by Vundle
-filetype plugin indent on    " required by Vundle
+call vundle#end()
+filetype plugin indent on
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = ","
+let g:mapleader = ","
+
 " Sets how many lines of history VIM has to remember
 set history=500
 
@@ -41,13 +44,8 @@ set history=500
 filetype plugin on
 filetype indent on
 
-" Set to auto read when a file is changed from the outside
+" Read when a file is changed from another editor
 set autoread
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -56,9 +54,8 @@ nmap <C-d> yyp
 noremap cc ddO
 
 " Creating and closing Tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
+map <leader>t :tabnew<cr>
+map <leader>w :tabclose<cr>
 
 " Switching Tabs
 map <leader>n :tabprevious<cr>
@@ -74,10 +71,10 @@ noremap <Right> <NOP>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " User interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
+" Set 7 lines to the cursor when moving vertically
 set so=7
 
-" Enable (relative) line numbers
+" Enable relative line numbers
 set number numberwidth=4
 set relativenumber
 
@@ -91,7 +88,7 @@ set wildignore=*.o,*~,*.pyc,*.hi
 set ruler
 
 " Highlight lines > 80 columns
-highlight ColorColumn ctermbg=magenta
+highlight ColorColumn ctermbg=red
 call matchadd('ColorColumn', '\%81v', 100)
 
 " Highlight tabs and trailing whitespaces
@@ -132,6 +129,9 @@ set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
+" Show git diff vertically
+set diffopt=vertical
+
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
@@ -147,16 +147,9 @@ syntax enable
 set background=dark
 colorscheme black_angus
 
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
-
-" Set utf8 as standard encoding and en_US as the standard language
+" Set utf8 as standard encoding and en as the standard language
 set encoding=utf8
+language en_US
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -175,7 +168,7 @@ set noswapfile
 " Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Acceptable paste command
-set pastetoggle=<F2>
+set pastetoggle=<leader>p
 
 " Use spaces instead of tabs
 set expandtab
@@ -195,14 +188,11 @@ set ai "Auto indent
 set si "Smart indent
 " set wrap "Wrap lines
 
-" strip all whitespaces at eol when saving a file
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual mode related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 
@@ -210,16 +200,20 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Treat long lines as break lines (useful when moving around in them)
+" Treat long lines as break lines
 map j gj
 map k gk
 
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+" Map Space to search and Ctrl-<Space> to ? (backwards search)
 map <space> /
 map <C-space> ?
 
+" Convenient indenting
+nnoremap > >>
+nnoremap < <<
+
 " Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+map <leader><cr> :noh<cr>
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -227,31 +221,14 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>
+map <leader>k :NERDTree<cr>
 
-" Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-" Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
-
-" Return to last edit position when opening files (You want this!)
+" Return to last edit position when opening files
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
      \ endif
+
 " Remember info about open buffers on close
 set viminfo^=%
 
@@ -279,13 +256,6 @@ nnoremap <M-k> k
 noremap <M-j> :m+1<cr>==
 noremap <M-k> :m-2<cr>==
 
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
-
 " Delete trailing white space on save
 func! DeleteTrailingWS()
   exe "normal mz"
@@ -294,21 +264,6 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite :call DeleteTrailingWS()
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" vimgrep searching and cope displaying
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When you press gv you vimgrep after the selected text
-vnoremap <silent> gv :call VisualSelection('gv')<CR>
-
-" Open vimgrep and put the cursor in the right position
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-
-" Vimgreps in the current file
-map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
-
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Spell checking
@@ -322,12 +277,6 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" remap NERDTree
-command NT NERDTree
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Abbrevations
@@ -348,18 +297,12 @@ iabbrev hcr Hans Christian Rudolph
 " Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-function! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
-
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
 endfunction
+
 
 function! VisualSelection(direction) range
     let l:saved_reg = @"
@@ -382,6 +325,7 @@ function! VisualSelection(direction) range
     let @" = l:saved_reg
 endfunction
 
+
 " Returns true if paste mode is enabled
 function! HasPaste()
     if &paste
@@ -390,29 +334,10 @@ function! HasPaste()
     return ''
 endfunction
 
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
-
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
-    endif
-
-    if bufnr("%") == l:currentBufNum
-        new
-    endif
-
-    if buflisted(l:currentBufNum)
-        execute("bdelete! ".l:currentBufNum)
-    endif
-endfunction
 
 " Switch on indent folding
 augroup vimrc
     au BufReadPre * setlocal foldmethod=indent
     au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | endif
 augroup END
+
