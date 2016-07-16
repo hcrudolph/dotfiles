@@ -142,12 +142,17 @@ set tm=500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set t_Co=256
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
 " Enable syntax highlighting
 syntax enable
 set background=dark
 colorscheme black_angus
 
-" Set utf8 as standard encoding and en as the standard language
+" Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 language en_US
 
@@ -186,7 +191,6 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-" set wrap "Wrap lines
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -285,10 +289,6 @@ iabbrev esle else
 iabbrev eles else
 iabbrev eles else
 iabbrev sefl self
-iabbrev fn function
-iabbrev pb public
-iabbrev pt protected
-iabbrev pr private
 iabbrev @@ hanschristianrudolph@gmail.com
 iabbrev hcr Hans Christian Rudolph
 
