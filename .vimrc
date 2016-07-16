@@ -77,6 +77,9 @@ noremap <Right> <NOP>
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
+let $LANG='en'
+set langmenu=en
+
 " Enable (relative) line numbers
 set number numberwidth=4
 set relativenumber
@@ -142,18 +145,15 @@ set tm=500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set t_Co=256
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
 " Enable syntax highlighting
 syntax enable
 set background=dark
 colorscheme black_angus
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -193,7 +193,6 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-" set wrap "Wrap lines
 
 " strip all whitespaces at eol when saving a file
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
@@ -226,6 +225,8 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+
+map <leader>k :NERDTree<cr>
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -279,21 +280,6 @@ nnoremap <M-k> k
 noremap <M-j> :m+1<cr>==
 noremap <M-k> :m-2<cr>==
 
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
-
-" Delete trailing white space on save
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite :call DeleteTrailingWS()
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimgrep searching and cope displaying
@@ -311,35 +297,12 @@ map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><r
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" remap NERDTree
-command NT NERDTree
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Abbrevations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 iabbrev esle else
 iabbrev eles else
 iabbrev eles else
 iabbrev sefl self
-iabbrev fn function
-iabbrev pb public
-iabbrev pt protected
-iabbrev pr private
 iabbrev @@ hanschristianrudolph@gmail.com
 iabbrev hcr Hans Christian Rudolph
 
