@@ -150,7 +150,7 @@ set encoding=utf8
 " Enable syntax highlighting
 syntax enable
 set background=dark
-colorscheme black_angus
+colorscheme molokai
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
