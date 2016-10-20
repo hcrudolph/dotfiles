@@ -57,13 +57,13 @@ fi
 [ -n "$SSH_CONNECTION" ] && unset SSH_ASKPASS
 
 # PS1 Promt
-USER="\[\e${__GREEN_COLOR}\]\u\[\e[m\]"
-FQDN="\[\e${__YELLOW_COLOR}\]\H\[\e[m\]"
-DIR="\[\e${__RED_COLOR}\]\w\[\e[m\]"
-BRANCH="\[\e${__CYAN_COLOR}\]\$git_branch\[\e[m\]"
-DIRTY="\[\e${__CYAN_COLOR}\]\$git_dirty\[\e[m\]"
+PS1_USER="\[\e${__GREEN_COLOR}\]\u\[\e[m\]"
+PS1_FQDN="\[\e${__YELLOW_COLOR}\]\H\[\e[m\]"
+PS1_DIR="\[\e${__RED_COLOR}\]\w\[\e[m\]"
+PS1_BRANCH="\[\e${__CYAN_COLOR}\]\$git_branch\[\e[m\]"
+PS1_DIRTY="\[\e${__CYAN_COLOR}\]\$git_dirty\[\e[m\]"
 
-export PS1="\[\e${__DEFAULT_COLOR}\]$USER at $FQDN in $DIR $BRANCH $DIRTY\[\e[m\]
+export PS1="\[\e${__DEFAULT_COLOR}\]$PS1_USER at $PS1_FQDN in $PS1_DIR $PS1_BRANCH $PS1_DIRTY\[\e[m\]
 $ "
 
 # TexLive 2016
