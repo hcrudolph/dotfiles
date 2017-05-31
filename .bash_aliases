@@ -13,6 +13,8 @@ alias tm='tmux'
 alias py3='python3'
 alias py='python'
 alias v='vim'
+alias d='docker'
+alias dc='docker-compose'
 alias reload='. ~/.bashrc'
 alias gtime='/usr/bin/time'
 alias ..='cd ..'
@@ -43,8 +45,6 @@ alias gbr='git branch'
 alias gci='git commit'
 alias gco='git checkout'
 alias gdf='git diff'
-alias glg2='git log --date-order --all --graph --name-status --format="%C(green)%H%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
-alias glg='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
 alias gpl='git pull'
 alias gpu='git push'
 alias grb='git rebase'
@@ -61,4 +61,3 @@ cdl() {
 mcd () {
     mkdir $1 && cd $1
 }
-
