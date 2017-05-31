@@ -143,17 +143,14 @@ set tm=500
 " Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256
+colorscheme obsidian
 
-" Set utf8 as standard encoding and en_US as the standard language
+" Set utf8 as standard encoding
 set encoding=utf8
 
 " Enable syntax highlighting
 syntax enable
 set background=dark
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-language en_US
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -288,8 +285,6 @@ iabbrev esle else
 iabbrev eles else
 iabbrev eles else
 iabbrev sefl self
-iabbrev @@ hanschristianrudolph@gmail.com
-iabbrev hcr Hans Christian Rudolph
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
