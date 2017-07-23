@@ -1,0 +1,58 @@
+alternative_order text/plain text/html
+auto_view text/html
+set date_format="%Y-%m-%d"
+set delete="yes"
+set edit_headers = yes
+set editor = vimx
+set fast_reply = yes
+set folder = imaps://imap.gmail.com
+set from = hanschristianrudolph@gmail.com
+set hostname = gmail.com
+set imap_keepalive = 300
+set imap_pass = $GMAIL_APP_PASSWORD
+set imap_user = hanschristianrudolph@gmail.com
+set include = yes
+set index_format="%D %Z %-15.15L %s"
+set mail_check = 5
+set menu_scroll = yes
+set my_name = "Hans Christian Rudolph"
+set narrow_tree
+set pager_stop = yes
+set print_command='muttprint -P letter -F Helvetica -p TO_FILE:$HOME/mail.ps'
+set print_decode
+set quit = yes
+set realname = "Hans Christian Rudolph"
+set smtp_pass = $GMAIL_APP_PASSWORD
+set smtp_url = smtps://hanschristianrudolph@smtp.gmail.com
+set sort="threads"
+set sort_aux="reverse-last-date-received"
+set spoolfile = +INBOX
+set ssl_force_tls = yes
+set ssl_starttls = yes
+set strict_threads
+set text_flowed = yes
+set timeout = 10
+set use_from = yes
+unset collapse_unread
+unset confirmappend
+unset help
+unset imap_passive
+unset mark_old
+unset markers
+unset record
+mailboxes = +INBOX
+
+bind index gg first-entry
+bind index G last-entry
+bind index R group-reply
+bind index <space> collapse-thread
+bind index V collapse-all
+bind pager <space> next-page
+bind pager <backspace> previous-page
+bind editor <space> noop
+
+color normal color255 color235
+color quoted color85 color235
+color signature color245 color235
+color hdrdefault color250 color235
+color tilde color250 color235
