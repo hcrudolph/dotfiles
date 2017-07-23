@@ -1,24 +1,23 @@
 #!/bin/bash
 
 # General
-alias ls='ls --color=auto'
-alias ll='ls -l'
-alias la='ls -la'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-alias h='head'
-alias t='tail'
-alias tm='tmux'
-alias py3='python3'
-alias py='python'
-alias v='vim'
+alias ..='cd ..'
 alias d='docker'
 alias dc='docker-compose'
-alias reload='. ~/.bashrc'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
 alias gtime='/usr/bin/time'
-alias ..='cd ..'
-alias ...='cd ../..'
+alias h='head'
+alias la='ls -la'
+alias ll='ls -l'
+alias ls='ls --color=auto'
+alias py3='python3'
+alias py='python'
+alias reload='. ~/.bashrc'
+alias t='tail'
+alias tm='tmux'
+alias v='vim'
 
 # aptitude
 alias apt-clean='sudo apt-get clean'
@@ -38,6 +37,7 @@ alias dnfc='dnf clean all'
 alias dnfr='dnf remove'
 
 # git
+alias github=Github
 alias gad='git add'
 alias gaa='git add -A'
 alias gus='git reset HEAD'
@@ -60,4 +60,16 @@ cdl() {
 
 mcd () {
     mkdir $1 && cd $1
+}
+
+Github() {
+    if [ ! -d .git ] ; 
+        then echo "ERROR: This isnt a git directory" && return false; 
+    fi
+    git_url=`git config --get remote.origin.url`
+    if [[ $git_url != https://github* ]] ;
+        then echo "ERROR: Remote origin is invalid" && return false;
+    fi
+    url=${git_url%.git}
+    firefox $url
 }

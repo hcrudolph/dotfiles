@@ -16,16 +16,14 @@ __CYAN_COLOR="[36m"
 
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
+HISTSIZE=1000
+HISTFILESIZE=2000
 
 # append to the history file, don't overwrite it
 shopt -s histappend
 
 # check the window size after each command
 shopt -s checkwinsize
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
 
 # enable color support of ls
 if [ -x /usr/bin/dircolors ]; then
@@ -35,6 +33,7 @@ fi
 case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
+
 force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
@@ -47,7 +46,18 @@ fi
 
 # Import custom aliases
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+    source ~/.bash_aliases
+fi
+
+# Import private ENV variables
+if [ -f ~/.secrets ]; then
+    source ~/.secrets
+fi
+
+# Enable git-aware promt
+if [ -f ~/git/git-aware-prompt/main.sh ]; then
+    export GITAWAREPROMPT=~/git/git-aware-prompt
+    source "${GITAWAREPROMPT}/main.sh"
 fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -67,17 +77,9 @@ export PS1="\[\e${__DEFAULT_COLOR}\]$PS1_USER at $PS1_FQDN in $PS1_DIR $PS1_BRAN
 $ "
 
 # TexLive 2016
-PATH="/usr/local/texlive/2016/bin/x86_64-linux/:$PATH"
-# Excercism
-PATH="/opt/exercism/:$PATH"
-# RVM
-PATH="~/.rvm/bin:$PATH" # Add RVM to PATH for scripting
+PATH="$PATH:/usr/local/texlive/2016/bin/x86_64-linux/"
 
 # Exports
-export GITAWAREPROMPT=~/git/git-aware-prompt
-source "${GITAWAREPROMPT}/main.sh"
-
 export GIT_ASKPASS=
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH
 export EDITOR="vim"
+export PATH
