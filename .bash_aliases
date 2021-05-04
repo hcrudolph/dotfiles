@@ -1,35 +1,23 @@
-#!/bin/bash
-
 # General
-alias ..='cd ..'
-alias by='byobu'
-alias d='docker'
-alias dc='docker-compose'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias grep='grep --color=auto'
-alias gtime='/usr/bin/time'
-alias h='head'
-alias hist='history'
-alias la='ls -la'
-alias ll='ls -l'
-alias ls='ls --color=auto'
-alias py='python'
-alias py3='python3'
-alias reload='. ~/.bashrc'
-alias t='tail'
-alias tm='tmux'
-alias v='vim'
-
-# aptitude
-alias apt-clean='sudo apt-get clean'
-alias apt-install='sudo apt-get install'
-alias apt-policy="LANG=C apt-cache policy"
-alias apt-purge='sudo apt-get --purge  remove'
-alias apt-remove='sudo apt-get remove'
-alias apt-search='apt-cache search'
-alias apt-show='apt-cache show'
-alias apt-up="sudo apt-get update && sudo apt-get upgrade"
+alias ..="cd .."
+alias d="docker"
+alias dc="docker-compose"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias grep="grep --color=auto"
+alias gtime="/usr/bin/time"
+alias la="ls -la"
+alias ll="ls -l"
+alias ls="ls -G"
+alias py3="python3"
+alias py="python"
+alias reload=". ~/.zshrc"
+alias h="head"
+alias t="tail"
+alias v="vim"
+alias prettyjson="python3 -m json.tool"
+alias env=". venv/bin/activate"
+alias k="kubectl"
 
 # dnf
 alias dnfc='dnf clean all'
@@ -53,28 +41,12 @@ alias grb='git rebase'
 alias gst='git status'
 alias gus='git reset HEAD'
 
-cdl() {
-    builtin cd "$*"
-    RESULT=$?
-    if [ "$RESULT" -eq 0 ]; then
-        ll
-    fi
+urlunquote() {
+    python3 -c "import urllib.parse; print(urllib.parse.unquote('$1', safe=''))"
 }
 
-mcd () {
-    mkdir $1 && cd $1
-}
-
-Github() {
-    if [ ! -d .git ] ; 
-        then echo "ERROR: This isnt a git directory" && return false; 
-    fi
-    git_url=`git config --get remote.origin.url`
-    if [[ $git_url != https://github* ]] ;
-        then echo "ERROR: Remote origin is invalid" && return false;
-    fi
-    url=${git_url%.git}
-    firefox $url
+whereru() {
+    curl -s https://api.ipgeolocationapi.com/geolocate/$1
 }
 
 Gitlab() {
