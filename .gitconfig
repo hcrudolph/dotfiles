@@ -1,9 +1,0 @@
-[core]
-    editor = vim
-[user]
-    name = Hans Christian Rudolph
-    email = hcrudolph@posteo.de
-[color]
-    diff = auto
-    status = auto
-    branch = auto
