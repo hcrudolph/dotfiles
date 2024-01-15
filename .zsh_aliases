@@ -5,6 +5,7 @@ alias ..='cd ..'
 alias by='byobu'
 alias d='docker'
 alias dc='docker-compose'
+alias dirs='dirs -v'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
@@ -15,7 +16,7 @@ alias la='ls -la'
 alias ll='ls -l'
 alias py='python'
 alias py3='python3'
-alias reload='. ~/.bashrc'
+alias reload='source ~/.zshrc'
 alias t='tail'
 alias tm='tmux'
 alias v='vim'
@@ -44,7 +45,6 @@ alias gbr='git branch'
 alias gci='git commit'
 alias gco='git checkout'
 alias gdf='git diff'
-alias github=Github
 alias glo='git log'
 alias gpl='git pull'
 alias gpu='git push'
@@ -52,7 +52,7 @@ alias grb='git rebase'
 alias gst='git status'
 alias gus='git reset HEAD'
 
-Github() {
+github() {
     if [ ! -d .git ] ; 
         then echo "ERROR: This isnt a git directory" && return false; 
     fi
@@ -61,5 +61,5 @@ Github() {
         then echo "ERROR: Remote origin is invalid" && return false;
     fi
     url=${git_url%.git}
-    firefox $url
+    open $url
 }
