@@ -11,7 +11,7 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]
 zstyle ':completion:*' menu select=long
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' verbose false
-zstyle :compinstall filename '/home/hcrudolph/.zshrc'
+zstyle :compinstall filename '~/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -31,6 +31,7 @@ bindkey -v
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+source ~/.zshrc_local
 source ~/.zsh_aliases
 
 # Uncomment the following line to use case-sensitive completion.
